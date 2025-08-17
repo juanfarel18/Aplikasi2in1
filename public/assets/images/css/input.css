@@ -1,0 +1,197 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+#slider img {
+  width: 100vw;
+  height: 70vh;
+  object-fit: cover;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Efek kedipan khusus untuk teks dan ikon */
+.glow-text {
+  animation: glowText 2s ease-in-out infinite;
+}
+
+@keyframes glowText {
+  0%,
+  100% {
+    text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e;
+    color: #ffffff;
+  }
+  50% {
+    text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e;
+    color: #bbf7d0;
+  }
+}
+
+#slider {
+  transition: none; /* Tidak ada transisi awal */
+}
+
+#slider.animate {
+  transition: transform 0.7s ease-in-out;
+}
+
+/* Gradient kiri-kanan */
+.slider-gradient::before,
+.slider-gradient::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.slider-gradient::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), transparent);
+}
+
+.slider-gradient::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), transparent);
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.slider-dot.active {
+  background-color: #22c55e;
+}
+
+/* Animasi dari kiri ke kanan */
+/* Animasi dari kiri ke kanan */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animasi dari kanan ke kiri */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.scroll-animate,
+.scroll-animate-right {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.scroll-animate {
+  transform: translateX(-50px);
+}
+
+.scroll-animate-right {
+  transform: translateX(50px);
+}
+
+.scroll-animate.visible {
+  animation: slideInLeft 0.8s forwards;
+}
+
+.scroll-animate-right.visible {
+  animation: slideInRight 0.8s forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-top {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-center {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 2s ease, transform 2s cubic-bezier(0.25, 1, 0.5, 1); /* slow and smooth */
+  will-change: opacity, transform;
+}
+
+.fade-in-center.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#dropdownIcon {
+  transition: transform 0.3s ease;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* --- PERUBAHAN DIMULAI: CSS untuk Ikon Hamburger --- */
+.hamburger-line {
+  transition: all 0.3s ease-in-out;
+}
+
+/* State "X" saat menu terbuka */
+.hamburger.open .line-1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open .line-2 {
+  opacity: 0;
+}
+.hamburger.open .line-3 {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
